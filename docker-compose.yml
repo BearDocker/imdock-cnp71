@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+
+    #--------------------------------------
+    # Web Service
+    #--------------------------------------
+    imdock-cnp7:
+        restart: always
+        image: imagine10255/imdock:cnp7
+#        build:
+#          context: .
+#          dockerfile: Dockerfile
+        container_name: imdock-cnp7
+        ports:
+            - "80:80"
+            - "8122:22"
+            - "9100:9000"
+        volumes:
+          - ../website:/var/www
+          - ./sites-enable:/etc/nginx/conf.d
+          - ./conf/nginx.conf:/etc/nginx/nginx.conf
+          - ./conf/php-ini-overrides.ini:/etc/php.d/zzz-overrides.ini
+          #- ./conf/supervisord.conf:/etc/supervisor/supervisord.conf

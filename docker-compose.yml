@@ -13,9 +13,9 @@ services:
 #          dockerfile: Dockerfile
         container_name: imdock-cnp7
         ports:
-            - "80:80"
-            - "8122:22"
-            - "9100:9000"
+            - "2002:80"
+#            - "8122:22"
+#            - "9100:9000"
         volumes:
           - ../website:/var/www
           - ./sites-enable:/etc/nginx/conf.d

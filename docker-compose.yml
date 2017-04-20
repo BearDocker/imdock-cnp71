@@ -11,13 +11,13 @@ services:
 #        build:
 #          context: .
 #          dockerfile: Dockerfile
-        container_name: imdock-cnp7
+        container_name: project-name
         ports:
             - "2002:80"
 #            - "8122:22"
 #            - "9100:9000"
         volumes:
-          - ../website:/var/www
+          - ./website:/var/www
           - ./sites-enable:/etc/nginx/conf.d
           - ./conf/nginx.conf:/etc/nginx/nginx.conf
           - ./conf/php-ini-overrides.ini:/etc/php.d/zzz-overrides.ini

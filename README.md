@@ -15,7 +15,7 @@ Centos(Nginx + PHP7.1)
 
 ## How to install:
 
-    ~ $ git clone https://github.com/imagine10255/imdock-cnp56.git {your-project-name}
+    ~ $ git clone https://github.com/imagine10255/imdock-cnp7.git {your-project-name}
     ~ $ cd {your-project-name}
     
     # change your custom settting

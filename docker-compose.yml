@@ -11,7 +11,7 @@ services:
 #        build:
 #          context: .
 #          dockerfile: Dockerfile
-        container_name: project-name
+        container_name: {project-sn}
         ports:
             - "2002:80"
 #            - "8122:22"

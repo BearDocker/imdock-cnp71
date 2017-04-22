@@ -6,8 +6,8 @@ read -p "Container-Name/Id or Enter empty(default: $CURRENT): " CONTAINERID
 case $CONTAINERID in
      *)
         if [ "$CONTAINERID" == "" ]; then
-            docker exec -it ${CURRENT} bash
+            docker inspect ${CURRENT}
         else
-            docker exec -it ${CONTAINERID} bash
+            docker inspect ${CONTAINERID}
         fi
     ;;esac

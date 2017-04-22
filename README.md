@@ -15,23 +15,43 @@ Centos(Nginx + PHP7.1)
 
 ## How to install:
 
-    ~ $ git clone https://github.com/imagine10255/imdock-cnp7.git {your-project-name}
-    ~ $ cd {your-project-name}
+    ~ $ mkdir {project-name}
+    ~ $ cd {project-name}
+    ~/{project-name} $ git clone https://github.com/imagine10255/imdock-cnp7.git
+    ~/{project-name} $ cd imdock-cnp7
+
+
+#### change your custom settting (container_name: {project-name})
+
+    ~/{project-name}/imdock-cnp7 $ vim ./docker-compose-yml
+    ~/{project-name}/imdock-cnp7 $ docker-compose up
     
-    # change your custom settting
-    ~/{your-project-name} $ vim ./docker-compose-yml
-    ~/{your-project-name} $ docker-compose up
+#### open browser, testing your host-ip, see the phpinfo is success! ctrl+c close this
+#### now, you can move the your project to website dir
     
-    # open browser, testing your host-ip, see the phpinfo is success! ctrl+c close this
-    # now, you can move the your project to website dir
+    ~/{project-name}/imdock-cnp7 $ cp ./sites-enable/default.vhost.sample ./sites-enable/default.vhost
     
-    ~/{your-project-name} $ cp ./sites-enable/default.vhost.sample ./sites-enable/default.vhost
-    
-    # setting your custom nginx config
-    ~/{your-project-name} $ vim ./default.vhost
-    ~/{your-project-name} $ docker-compose up -d
-            
-            
+#### setting your custom nginx config (volumes: ./website:/var/www → ../{project-dir}:/var/www)
+
+    ~/{project-name}/imdock-cnp7 $ vim ./docker-compose-yml
+    ~/{project-name}/imdock-cnp7 $ vim ./default.vhost
+    ~/{project-name}/imdock-cnp7 $ docker-compose up -d
+
+
+## Reference architecture:
+
+```txt
+{project-name}
+├── imdock-cnp7
+│   ├── conf/
+│   ├── sites-enable/(nginx website setting)
+│   ├── sites-module/
+│   ├── website(sample phpinfo)
+│   ├── Dockerfile
+│   └── docker-compose.yml
+└── {project-dir}
+    └── ...
+```
 ## How to and other docker-compose use the same network :
 
     #if you not have group network, you can create this, and other docker-compose use this network setting

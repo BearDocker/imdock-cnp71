@@ -23,6 +23,7 @@ services:
           - ./conf/nginx.conf:/etc/nginx/nginx.conf
           - ./conf/php-ini-overrides.ini:/etc/php.d/zzz-overrides.ini
           #- ./conf/supervisord.conf:/etc/supervisor/supervisord.conf
+          #- ~/.ssh:/root/.ssh
 
 
 networks:

@@ -9,6 +9,7 @@ RUN cp -p /usr/share/zoneinfo/Asia/Taipei /etc/localtime
 # Install base tool
 RUN yum -y install vim wget tar
 RUN yum -y groupinstall development
+RUN yum -y install perl-CPAN zlib zlib-devel curl-devel
 
 # Install PHP7-FPM (https://webtatic.com/packages/php71)
 RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
@@ -46,6 +47,17 @@ RUN sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config && \
     ssh-keygen -q -t rsa -N '' -f /etc/ssh/ssh_host_rsa_key && \
     ssh-keygen -q -t dsa -N '' -f  /etc/ssh/ssh_host_dsa_key && \
     ssh-keygen -q -t ecdsa -N '' -f /etc/ssh/ssh_host_ecdsa_key
+
+
+# Install Git
+RUN wget https://www.kernel.org/pub/software/scm/git/git-2.12.3.tar.gz && \
+    tar zxf git-2.12.3.tar.gz && \
+    cd git-2.12.3 && \
+    ./configure && \
+    make && \
+    make prefix=/usr/local install && \
+    echo "export PATH=$PATH:/usr/local/git/bin" >> /etc/bashrc && \
+    source /etc/bashrc
 
 
 # Delete Install data-info

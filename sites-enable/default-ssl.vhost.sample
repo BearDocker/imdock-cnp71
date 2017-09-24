@@ -1,0 +1,28 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name bnloutdoors.com.au;
+    index index.php index.html;
+    root /var/www/public;
+    
+    rewrite ^(.*) https://$host$1 permanent;
+}
+
+
+server{
+   listen 443 ssl;
+   listen [::]:443 ssl;
+   server_name bnloutdoors.com.au;
+   index index.php index.html;
+   root /var/www/public;
+
+   ssl_certificate     /etc/nginx/ssl/your_domain_name.chained.crt;
+   ssl_certificate_key /etc/nginx/ssl/source/your_domain_name.key;
+
+   ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+   ssl_prefer_server_ciphers on;
+   ssl_ciphers 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH';
+
+   include /etc/nginx/sites-module/enable-php.conf;
+   include /etc/nginx/sites-module/enable-laravel.conf;
+}

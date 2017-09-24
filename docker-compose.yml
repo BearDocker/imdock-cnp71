@@ -15,6 +15,7 @@ services:
         working_dir: /var/www
         ports:
             - "2002:80"
+#            - "443:443"
 #            - "8122:22"
 #            - "9100:9000"
         volumes:
@@ -24,6 +25,7 @@ services:
           - ./conf/php-ini-overrides.ini:/etc/php.d/zzz-overrides.ini
           #- ./conf/supervisord.conf:/etc/supervisor/supervisord.conf
           #- ~/.ssh:/root/.ssh
+          #- ../ssl:/etc/nginx/ssl
 
 
 networks:

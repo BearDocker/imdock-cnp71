@@ -7,7 +7,7 @@ services:
     #--------------------------------------
     imdock-cnp7:
         restart: always
-        image: imagine10255/imdock:cnp72
+        image: imagine10255/imdock:cnp71
 #        build:
 #          context: .
 #          dockerfile: Dockerfile
